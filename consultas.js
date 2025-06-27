@@ -46,24 +46,18 @@ db.presentaciones.aggregate([
 // ======================================
 
 //Función escenariosPorCiudad devuelve todos los escenarios en esa ciudad
-db.system.js.save({
-  _id: "escenariosPorCiudad",
-  value: function(ciudad) {
-    return db.escenarios.find({ ciudad: ciudad }).toArray();
-  }
-});
+function escenariosPorCiudad(ciudad) {
+  return db.escenarios.find({ ciudad: ciudad }).toArray();
+}
 
 //Función bandasPorGenero(genero): devuelve todas las bandas activas de ese género
-db.system.js.save({
-  _id: "bandasPorGenero",
-  value: function(genero) {
-    return db.bandas.find({ genero: genero, activa: true }).toArray();
-  }
-});
+function bandasPorGenero(genero) {
+  return db.bandas.find({ genero: genero, activa: true }).toArray();
+}
 
 
 // ======================================
-// 5. TRANSACCIONES (REPLICA SET REQUERIDO)
+// 5. TRANSACCIONES 
 // ======================================
 
 //Simular compra de un boleto:
